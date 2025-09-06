@@ -5,60 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QIntellex</title>
   <style>
-    .framework-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.framework-card {
-  flex: 1 1 250px;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  text-align: center;
-  transition: transform 0.2s;
-}
-
-.framework-card:hover {
-  transform: translateY(-5px);
-}
-
-.framework-card h3 {
-  color: #2563eb;
-  margin-bottom: 0.5rem;
-}
-
-.framework-card p {
-  color: #374151;
-  font-size: 1rem;
-}
-
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       background: #f9fafb;
       color: #111827;
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
-    header {
+
+    a {
+      text-decoration: none;
+    }
+
+    /* Sticky Navigation */
+    nav {
+      position: sticky;
+      top: 0;
       background: #111827;
       color: #fff;
-      padding: 2rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem 0;
+    }
+    nav a {
+      color: #fff;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #3b82f6;
+    }
+
+    /* Hero Section */
+    header {
+      background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+      color: #fff;
+      padding: 4rem 1rem 6rem;
       text-align: center;
     }
     header h1 {
       margin: 0;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
     }
     header p {
       font-size: 1.2rem;
       margin-top: 0.5rem;
     }
+    header .button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background: #fff;
+      color: #2563eb;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+    header .button:hover {
+      background: #2563eb;
+      color: #fff;
+    }
+
     section {
       max-width: 900px;
       margin: 3rem auto;
@@ -68,29 +78,97 @@
       font-size: 1.8rem;
       color: #111827;
       margin-bottom: 1rem;
+      text-align: center;
     }
     p {
       margin-bottom: 1rem;
       color: #374151;
     }
-    a.button {
+    ul {
+      color: #374151;
+    }
+
+    /* Framework Section */
+    .framework-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .framework-card {
+      flex: 1 1 250px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .framework-card:hover {
+      transform: translateY(-5px);
+    }
+    .framework-card svg {
+      display: block;
+      margin: 0 auto 1rem auto;
+    }
+    .framework-card h3 {
+      color: #2563eb;
+      margin-bottom: 0.5rem;
+    }
+    .framework-card p {
+      color: #374151;
+      font-size: 1rem;
+    }
+
+    /* Buttons */
+    .button {
       display: inline-block;
       margin-top: 1rem;
       padding: 0.6rem 1.2rem;
       background: #2563eb;
       color: #fff;
-      text-decoration: none;
       border-radius: 6px;
     }
+
     footer {
       text-align: center;
       padding: 2rem;
       background: #e5e7eb;
       color: #111827;
     }
+
+    /* Mobile tweaks */
+    @media(max-width:768px){
+      .framework-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+    @media(max-width:480px){
+      header {
+        padding: 2.5rem 1rem 4rem;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
+
+  <!-- Sticky Navigation -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#insights">Insights</a>
+    <a href="#framework">Approach</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
   <!-- Hero Section -->
   <header>
@@ -98,31 +176,11 @@
     <p>Where Systems Meet Human Intelligence</p>
     <a href="#insights" class="button">Explore Insights</a>
   </header>
-<!-- Framework Section -->
-<section id="framework">
-  <h2>The Qintellex Approach</h2>
-  <p>Our methodology combines three essential layers to design systems that truly work for humans:</p>
-  
-  <div class="framework-container">
-    <div class="framework-card">
-      <h3>Systems</h3>
-      <p>Technology, architecture, and business processes designed for efficiency and reliability.</p>
-    </div>
-    <div class="framework-card">
-      <h3>People</h3>
-      <p>Users, stakeholders, and change agents whose behavior drives system adoption.</p>
-    </div>
-    <div class="framework-card">
-      <h3>Emotions</h3>
-      <p>Trust, motivation, and resistance—understanding the human side of every transformation.</p>
-    </div>
-  </div>
-</section>
 
   <!-- About Section -->
   <section id="about">
     <h2>About QIntellex</h2>
-    <p>QIntellex was founded by Nitish [Your Last Name], a solution architect passionate about bridging technology and human behavior. We help organizations design systems that respect people as much as processes.</p>
+    <p>QIntellex was founded by Nitish Puttur, a solution architect passionate about bridging technology and human behavior. We help organizations design systems that respect people as much as processes.</p>
     <p>Our mission: combine psychology, emotional intelligence, and enterprise systems to build solutions that truly work for humans.</p>
   </section>
 
@@ -135,21 +193,4 @@
       <li>The psychology of change in digital transformation</li>
       <li>Systems thinking with a human-centered approach</li>
     </ul>
-    <a href="#" class="button">Read More</a>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>If QIntellex’s approach resonates with you, let’s connect!</p>
-    <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile/" target="_blank">linkedin.com/in/yourprofile</a></p>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 QIntellex. All rights reserved.
-  </footer>
-
-</body>
-</html>
+    <a href="#" class="button">Read More<
