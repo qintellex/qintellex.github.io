@@ -3,31 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Qintellex</title>
+  <title>QIntellex</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
       background: #f9fafb;
       color: #111827;
+      line-height: 1.6;
     }
-    h1 {
+    header {
+      background: #111827;
+      color: #fff;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
       font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    section {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+    h2 {
+      font-size: 1.8rem;
+      color: #111827;
       margin-bottom: 1rem;
     }
     p {
-      font-size: 1.2rem;
+      margin-bottom: 1rem;
       color: #374151;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: #2563eb;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #e5e7eb;
+      color: #111827;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to Qintellex</h1>
-  <p>Where Systems Meet Human Intelligence.</p>
+
+  <!-- Hero Section -->
+  <header>
+    <h1>QIntellex</h1>
+    <p>Where Systems Meet Human Intelligence</p>
+    <a href="#insights" class="button">Explore Insights</a>
+  </header>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About QIntellex</h2>
+    <p>QIntellex was founded by Nitish [Your Last Name], a solution architect passionate about bridging technology and human behavior. We help organizations design systems that respect people as much as processes.</p>
+    <p>Our mission: combine psychology, emotional intelligence, and enterprise systems to build solutions that truly work for humans.</p>
+  </section>
+
+  <!-- Insights Section -->
+  <section id="insights">
+    <h2>Insights</h2>
+    <p>Here you’ll find reflections on the intersection of technology and human behavior. Topics include:</p>
+    <ul>
+      <li>Emotional intelligence in enterprise systems</li>
+      <li>The psychology of change in digital transformation</li>
+      <li>Systems thinking with a human-centered approach</li>
+    </ul>
+    <a href="#" class="button">Read More</a>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>If QIntellex’s approach resonates with you, let’s connect!</p>
+    <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile/" target="_blank">linkedin.com/in/yourprofile</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 QIntellex. All rights reserved.
+  </footer>
+
 </body>
 </html>
