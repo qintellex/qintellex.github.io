@@ -5,6 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QIntellex</title>
   <style>
+    .framework-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.framework-card {
+  flex: 1 1 250px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.framework-card:hover {
+  transform: translateY(-5px);
+}
+
+.framework-card h3 {
+  color: #2563eb;
+  margin-bottom: 0.5rem;
+}
+
+.framework-card p {
+  color: #374151;
+  font-size: 1rem;
+}
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -65,6 +98,26 @@
     <p>Where Systems Meet Human Intelligence</p>
     <a href="#insights" class="button">Explore Insights</a>
   </header>
+<!-- Framework Section -->
+<section id="framework">
+  <h2>The Qintellex Approach</h2>
+  <p>Our methodology combines three essential layers to design systems that truly work for humans:</p>
+  
+  <div class="framework-container">
+    <div class="framework-card">
+      <h3>Systems</h3>
+      <p>Technology, architecture, and business processes designed for efficiency and reliability.</p>
+    </div>
+    <div class="framework-card">
+      <h3>People</h3>
+      <p>Users, stakeholders, and change agents whose behavior drives system adoption.</p>
+    </div>
+    <div class="framework-card">
+      <h3>Emotions</h3>
+      <p>Trust, motivation, and resistance—understanding the human side of every transformation.</p>
+    </div>
+  </div>
+</section>
 
   <!-- About Section -->
   <section id="about">
