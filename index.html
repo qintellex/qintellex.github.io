@@ -6,276 +6,105 @@
 <title>QIntellex</title>
 <style>
   body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    background: #f9fafb;
-    color: #111827;
-    line-height: 1.6;
-    scroll-behavior: smooth;
-  }
-  a { text-decoration: none; }
-
-  /* Sticky Navigation */
-  nav {
-    position: sticky;
-    top: 0;
-    background: #111827;
+    font-family: Arial, sans-serif;
+    background: #111827; /* Charcoal Grey */
     color: #fff;
-    z-index: 1000;
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    padding: 1rem 0;
-  }
-  nav a {
-    color: #fff;
-    font-weight: bold;
-    transition: color 0.3s;
-  }
-  nav a:hover { color: #3b82f6; }
-
-  /* Hero Section */
-  header {
-    position: relative;
-    color: #fff;
-    padding: 4rem 1rem 6rem;
+    align-items: center;
+    height: 100vh;
     text-align: center;
     overflow: hidden;
   }
-  header h1 { 
-    margin: 0; 
-    font-size: 2.8rem; 
-    z-index: 2; 
-    position: relative; 
-    background: linear-gradient(270deg, #3b82f6, #60a5fa, #2563eb);
-    background-size: 600% 600%;
+
+  /* Hero shapes background */
+  .background-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.25;
+    animation: floatPulse 10s ease-in-out infinite;
+  }
+  .shape1 { width: 200px; height: 200px; background: #2563EB; top: 10%; left: 5%; animation-delay: 0s; }
+  .shape2 { width: 300px; height: 300px; background: #00BFA6; top: 30%; left: 70%; animation-delay: 2s; }
+  .shape3 { width: 250px; height: 250px; background: #7C3AED; top: 60%; left: 40%; animation-delay: 4s; }
+
+  @keyframes floatPulse {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.25; }
+    25% { transform: translateY(-10px) scale(1.05); opacity: 0.3; }
+    50% { transform: translateY(0) scale(1.1); opacity: 0.35; }
+    75% { transform: translateY(10px) scale(1.05); opacity: 0.3; }
+  }
+
+  /* Main content */
+  .content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+  }
+  h1 {
+    font-size: 3rem;
+    background: linear-gradient(90deg, #2563EB, #00BFA6, #7C3AED);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: textGradient 15s ease infinite;
+    background-size: 600% 600%;
+    animation: gradientText 15s ease infinite;
+    margin-bottom: 1rem;
   }
-  header p { font-size: 1.2rem; margin-top: 0.5rem; z-index: 2; position: relative; }
-  header .button {
-    display: inline-block;
-    margin-top: 1.5rem;
-    padding: 0.8rem 1.5rem;
-    background: #fff;
-    color: #2563eb;
-    font-weight: bold;
-    border-radius: 6px;
-    transition: background 0.3s, color 0.3s, transform 0.2s;
-    z-index: 2;
-    position: relative;
+  h2 {
+    font-size: 1.5rem;
+    color: #60a5fa;
+    margin-bottom: 2rem;
   }
-  header .button:hover {
-    background: #2563eb;
-    color: #fff;
-    transform: scale(1.05);
+  p {
+    font-size: 1rem;
+    color: #cbd5e1;
   }
 
-  /* Abstract shapes behind Hero */
-  header svg.bg-shapes {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 1;
-    pointer-events: none;
-    overflow: visible;
-  }
-
-  section {
-    max-width: 900px;
-    margin: 3rem auto;
-    padding: 0 1rem;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  section.visible { opacity: 1; transform: translateY(0); }
-
-  h2 { font-size: 1.8rem; color: #111827; margin-bottom: 1rem; text-align: center; }
-  p, ul { color: #374151; margin-bottom: 1rem; }
-
-  /* Framework Cards with floating */
-  .framework-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  .framework-card {
-    flex: 1 1 250px;
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-    animation: float 6s ease-in-out infinite;
-  }
-  .framework-card:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
-    background: linear-gradient(135deg, #60a5fa 0%, #2563eb 100%);
-    color: #fff;
-  }
-  .framework-card svg { display: block; margin: 0 auto 1rem auto; transition: fill 0.3s; }
-  .framework-card:hover svg { fill: #fff; }
-  .framework-card h3 { color: #2563eb; margin-bottom: 0.5rem; transition: color 0.3s; }
-  .framework-card:hover h3 { color: #fff; }
-  .framework-card p { font-size: 1rem; }
-
-  .button { display: inline-block; margin-top: 1rem; padding: 0.6rem 1.2rem; background: #2563eb; color: #fff; border-radius: 6px; }
-
-  footer { text-align: center; padding: 2rem; background: #e5e7eb; color: #111827; }
-
-  @media(max-width:768px){ .framework-container { flex-direction: column; gap: 1rem; } }
-  @media(max-width:480px){
-    header { padding: 2.5rem 1rem 4rem; }
-    header h1 { font-size: 2rem; }
-    nav { flex-direction: column; gap: 1rem; }
-  }
-
-  /* Gradient animation for shapes */
-  @keyframes gradientShift1 {
-    0% { stop-color: #3b82f6; }
-    50% { stop-color: #60a5fa; }
-    100% { stop-color: #3b82f6; }
-  }
-  @keyframes gradientShift2 {
-    0% { stop-color: #2563eb; }
-    50% { stop-color: #3b82f6; }
-    100% { stop-color: #2563eb; }
-  }
-
-  /* Card floating animation */
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-
-  /* Hero text gradient animation */
-  @keyframes textGradient {
+  @keyframes gradientText {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   }
+
+  /* Button */
+  a.button {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    background: #2563EB;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+  a.button:hover { background: #00BFA6; }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#insights">Insights</a>
-  <a href="#framework">Approach</a>
-  <a href="#contact">Contact</a>
-</nav>
+<div class="background-shapes">
+  <div class="shape shape1"></div>
+  <div class="shape shape2"></div>
+  <div class="shape shape3"></div>
+</div>
 
-<header>
+<div class="content">
   <h1>QIntellex</h1>
-  <p>Where Systems Meet Human Intelligence</p>
-  <a href="#insights" class="button">Explore Insights</a>
-
-  <!-- Animated gradient shapes -->
-  <svg class="bg-shapes" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
-    <defs>
-      <radialGradient id="grad1" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#3b82f6">
-          <animate attributeName="stop-color" values="#3b82f6;#60a5fa;#3b82f6" dur="15s" repeatCount="indefinite"/>
-        </stop>
-        <stop offset="100%" stop-color="#60a5fa">
-          <animate attributeName="stop-color" values="#60a5fa;#3b82f6;#60a5fa" dur="15s" repeatCount="indefinite"/>
-        </stop>
-      </radialGradient>
-      <radialGradient id="grad2" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#2563eb">
-          <animate attributeName="stop-color" values="#2563eb;#3b82f6;#2563eb" dur="20s" repeatCount="indefinite"/>
-        </stop>
-        <stop offset="100%" stop-color="#3b82f6">
-          <animate attributeName="stop-color" values="#3b82f6;#2563eb;#3b82f6" dur="20s" repeatCount="indefinite"/>
-        </stop>
-      </radialGradient>
-    </defs>
-    <circle id="shape1" cx="200" cy="150" r="120" fill="url(#grad1)" opacity="0.3"/>
-    <circle id="shape2" cx="600" cy="100" r="180" fill="url(#grad2)" opacity="0.25"/>
-    <ellipse id="shape3" cx="400" cy="400" rx="300" ry="150" fill="url(#grad1)" opacity="0.2"/>
-    <circle id="shape4" cx="700" cy="500" r="100" fill="url(#grad2)" opacity="0.15"/>
-  </svg>
-</header>
-
-<section id="about">
-  <h2>About QIntellex</h2>
-  <p>QIntellex was founded by Nitish Puttur, a solution architect passionate about bridging technology and human behavior. We help organizations design systems that respect people as much as processes.</p>
-  <p>Our mission: combine psychology, emotional intelligence, and enterprise systems to build solutions that truly work for humans.</p>
-</section>
-
-<section id="insights">
-  <h2>Insights</h2>
-  <ul>
-    <li>Emotional intelligence in enterprise systems</li>
-    <li>The psychology of change in digital transformation</li>
-    <li>Systems thinking with a human-centered approach</li>
-  </ul>
-  <a href="#" class="button">Read More</a>
-</section>
-
-<section id="framework">
-  <h2>The QIntellex Approach</h2>
-  <p>Our methodology combines three essential layers to design systems that truly work for humans:</p>
-  <div class="framework-container">
-    <div class="framework-card">
-      <svg width="48" height="48" fill="#2563eb" viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zm0-8h14V7H7v2z"/></svg>
-      <h3>Systems</h3>
-      <p>Technology, architecture, and business processes designed for efficiency and reliability.</p>
-    </div>
-    <div class="framework-card">
-      <svg width="48" height="48" fill="#2563eb" viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2.2c-3.2 0-9.6 1.6-9.6 4.8V22h19.2v-2.9c0-3.2-6.4-4.9-9.6-4.9z"/></svg>
-      <h3>People</h3>
-      <p>Users, stakeholders, and change agents whose behavior drives system adoption.</p>
-    </div>
-    <div class="framework-card">
-      <svg width="48" height="48" fill="#2563eb" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3 9.24 3 10.91 3.81 12 5.08 13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-      <h3>Emotions</h3>
-      <p>Trust, motivation, and resistance—understanding the human side of every transformation.</p>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>If QIntellex’s approach resonates with you, let’s connect!</p>
-  <p>Email: <a href="mailto:nitish.puttur@qintellex.com">nitish.puttur@qintellex.com</a></p>
-  <p>LinkedIn: <a href="https://www.linkedin.com/in/nitishputtur/" target="_blank">https://www.linkedin.com/in/nitishputtur/</a></p>
-</section>
-
-<footer>&copy; 2025 QIntellex. All rights reserved.</footer>
-
-<script>
-  // Scroll animations
-  const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){ entry.target.classList.add('visible'); }
-    });
-  }, {threshold:0.1});
-  sections.forEach(sec => observer.observe(sec));
-
-  // Hero parallax shapes
-  const shapes = [
-    document.getElementById('shape1'),
-    document.getElementById('shape2'),
-    document.getElementById('shape3'),
-    document.getElementById('shape4')
-  ];
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    shapes[0].setAttribute('cy', 150 + scrollY * 0.05);
-    shapes[1].setAttribute('cy', 100 + scrollY * 0.03);
-    shapes[2].setAttribute('cy', 400 + scrollY * 0.02);
-    shapes[3].setAttribute('cy', 500 + scrollY * 0.01);
-  });
-</script>
+  <h2>Bridging Technology, Psychology & Innovation</h2>
+  <p>Our website is currently in progress. Stay tuned for insights, frameworks, and solutions that bring systems and humans together.</p>
+  <a class="button" href="mailto:nitish.puttur@qintellex.com">Contact Us</a>
+</div>
 
 </body>
 </html>
